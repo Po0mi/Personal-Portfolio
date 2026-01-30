@@ -1,0 +1,11 @@
+@use "mixins" as *;
+@use "variables" as *;
+.contact-section {
+  @include section-contact;
+
+  .contact-wrapper {
+    .contact-container {
+      @include section-grid-contact;
+    }
+  }
+}
