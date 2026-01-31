@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
-    <!-- <div class="bg"></div>
-    <div class="Overlay"></div> -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
     <header class="header">
       <div class="logo">
         <img src="/assets/code-editor-svgrepo-com.svg" alt="logo" />
       </div>
       <div class="name">
-        <h1>Dan Gabrielle De Castro</h1>
+        <h1>[Dan Gabrielle De Castro]</h1>
       </div>
       <nav class="nav-main">
         <a href="#hero" class="nav-link">Home</a>
@@ -46,9 +46,14 @@
             /></a>
             <img src="/assets/instagram-svgrepo-com (1).svg" alt="instagram" />
             <img
+              style="opacity: 0.1"
               src="/assets/discord-logo-thin-svgrepo-com.svg"
               alt="discord"
-              style="opacity: 0.7"
+            />
+            <img
+              style="opacity: 1"
+              src="/assets/github-svgrepo-com.svg"
+              alt="discord"
             />
           </div>
         </div>
@@ -56,7 +61,6 @@
     </section>
     <section class="about-section" id="about">
       <div class="about-wrapper">
-        <div class="bg"></div>
         <div class="about-container">
           <h1>ABOUT</h1>
           <h2>ME</h2>
@@ -91,89 +95,90 @@
       </div>
     </section>
     <section class="projects-section" id="projects">
-      <div class="projects-header">
-        <h1>FEATURED PROJECTS</h1>
-      </div>
-
-      <div class="project-item" data-project="1">
-        <div class="project-content">
-          <div class="project-text">
-            <span class="project-number">01</span>
-            <h2>Red Cross Management System</h2>
-            <p>
-              A comprehensive PHP-based management system serving 500+ daily
-              users. Features include user registration, event management,
-              training sessions, donations tracking, and inventory management
-              with real-time notifications.
-            </p>
-            <div class="project-tags">
-              <span class="tag">PHP</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML/CSS</span>
+      <div class="projects-wrapper">
+        <div class="projects-track">
+          <div class="project-card">
+            <div class="project-visual">
+              <img
+                src="/assets/projects/project.png"
+                alt="Red Cross Management System"
+              />
             </div>
-            <a href="#" class="project-link">VIEW PROJECT →</a>
+            <div class="project-content">
+              <span class="project-num">01</span>
+              <h2>Red Cross Management System</h2>
+              <p>
+                A comprehensive PHP-based management system serving 500+ daily
+                users with event management, donations tracking, and real-time
+                notifications.
+              </p>
+              <div class="tech-stack">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>JavaScript</span>
+                <span>HTML/CSS</span>
+              </div>
+              <a href="#" class="view-btn">View Project →</a>
+            </div>
           </div>
-          <div class="project-media">
-            <div
-              class="project-img"
-              style="background-image: url(/assets/projects/project.png)"
-            ></div>
+
+          <div class="project-card">
+            <div class="project-visual">
+              <img
+                src="/assets/projects/project2.png"
+                alt="Game Guild Website"
+              />
+            </div>
+            <div class="project-content">
+              <span class="project-num">02</span>
+              <h2>Game Guild Website</h2>
+              <p>
+                A responsive website for a gaming guild with member profiles,
+                event schedules, tournament brackets, and modern dark-themed UI.
+              </p>
+              <div class="tech-stack">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>GSAP</span>
+              </div>
+              <a href="#" class="view-btn">View Project →</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-visual">
+              <img
+                src="/assets/projects/project3.png"
+                alt="Portfolio Website"
+              />
+            </div>
+            <div class="project-content">
+              <span class="project-num">03</span>
+              <h2>Portfolio Website</h2>
+              <p>
+                A modern portfolio showcase featuring GSAP animations, smooth
+                scroll interactions, and responsive design optimized for all
+                devices.
+              </p>
+              <div class="tech-stack">
+                <span>SCSS</span>
+                <span>JavaScript</span>
+                <span>GSAP</span>
+                <span>Three.js</span>
+              </div>
+              <a href="#" class="view-btn">View Project →</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="project-item" data-project="2">
-        <div class="project-content">
-          <div class="project-text">
-            <span class="project-number">02</span>
-            <h2>Game Guild Website</h2>
-            <p>
-              A responsive website design for a gaming guild, featuring member
-              profiles, event schedules, tournament brackets, and a modern
-              dark-themed UI with smooth animations and interactive elements.
-            </p>
-            <div class="project-tags">
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">GSAP</span>
-            </div>
-            <a href="#" class="project-link">VIEW PROJECT →</a>
-          </div>
-          <div class="project-media">
-            <div
-              class="project-img"
-              style="background-image: url(/assets/projects/project2.png)"
-            ></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-item" data-project="3">
-        <div class="project-content">
-          <div class="project-text">
-            <span class="project-number">03</span>
-            <h2>Portfolio Website</h2>
-            <p>
-              A modern portfolio showcase featuring GSAP-powered animations,
-              smooth scroll interactions, and responsive design. Built with
-              clean code and optimized for performance across all devices.
-            </p>
-            <div class="project-tags">
-              <span class="tag">SCSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">GSAP</span>
-              <span class="tag">Three.js</span>
-            </div>
-            <a href="#" class="project-link">VIEW PROJECT →</a>
-          </div>
-          <div class="project-media">
-            <div
-              class="project-img"
-              style="background-image: url(/assets/projects/project3.png)"
-            ></div>
-          </div>
+      <div class="projects-title">
+        <div class="projects-title-track">
+          <h1>FEATURED PROJECTS</h1>
+          <h1>FEATURED PROJECTS</h1>
+          <h1>FEATURED PROJECTS</h1>
+          <h1>FEATURED PROJECTS</h1>
         </div>
       </div>
     </section>
@@ -188,6 +193,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/main.js"></script>
   </body>
 </html>

@@ -18,7 +18,7 @@ window.addEventListener(
     );
 
     gsap.to(window, {
-      duration: 2,
+      duration: 3,
       scrollTo: target,
       ease: "power3.out",
       overwrite: "auto",
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Animation function
   function animateAboutSection() {
     const tl = gsap.timeline({
-      defaults: { ease: "smooth" },
+      defaults: { ease: "power2.out" },
     });
 
     // Animate title
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         x: 0,
         opacity: 1,
-        duration: 1,
+        duration: 0.6,
       },
       0,
     )
@@ -281,9 +281,9 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           x: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.6,
         },
-        0.15,
+        0.1,
       )
       // Animate paragraph
       .to(
@@ -291,9 +291,9 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           y: 0,
           opacity: 1,
-          duration: 1.2,
+          duration: 0.6,
         },
-        0.4,
+        0.2,
       )
       // Animate badges with stagger
       .to(
@@ -301,168 +301,167 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           scale: 1,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.4,
           stagger: {
-            amount: 0.8,
+            amount: 0.4,
             from: "start",
             ease: "power2.out",
           },
         },
-        0.8,
+        0.4,
       );
   }
 });
-
 /////////////////////////////////////
-//// PROJECT SECTION - VERTICAL SCROLL SNAP
+//// PROJECT SECTION - HORIZONTAL SCROLL
 /////////////////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
   const projectsSection = document.querySelector(".projects-section");
-  const projectSlides = document.querySelectorAll(".project-slide");
 
-  if (!projectsSection || projectSlides.length === 0) return;
+  if (!projectsSection) return;
 
-  let currentSlide = 0;
-  let isTransitioning = false;
-  let isInProjectsSection = false;
+  const track = document.querySelector(".projects-track");
+  const cards = gsap.utils.toArray(".project-card");
+  const bgTitle = document.querySelector(".projects-title h1");
 
-  // Get section bounds
-  function getSectionBounds() {
-    const rect = projectsSection.getBoundingClientRect();
-    return {
-      top: rect.top + window.scrollY,
-      bottom: rect.bottom + window.scrollY,
-    };
-  }
+  // Calculate total width
+  const totalWidth = cards.length * window.innerWidth;
+  const scrollDistance = totalWidth - window.innerWidth;
 
-  // Check if in projects section
-  function checkInSection() {
-    const bounds = getSectionBounds();
-    const scroll = window.scrollY;
-    const viewportHeight = window.innerHeight;
+  // Set initial states
+  gsap.set(cards, { opacity: 0, y: 50 });
+  if (bgTitle) gsap.set(bgTitle, { opacity: 0, scale: 0.8 });
 
-    isInProjectsSection =
-      scroll >= bounds.top - 50 &&
-      scroll <= bounds.bottom - viewportHeight + 50;
-  }
-
-  // Animate slide transition
-  function showSlide(index) {
-    projectSlides.forEach((slide, i) => {
-      if (i === index) {
-        slide.classList.add("active");
-        animateSlideIn(slide);
-      } else {
-        slide.classList.remove("active");
+  // Reveal animation when section enters viewport
+  ScrollTrigger.create({
+    trigger: projectsSection,
+    start: "top bottom",
+    once: true,
+    onEnter: () => {
+      // Animate background title
+      if (bgTitle) {
+        gsap.to(bgTitle, {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "power2.out",
+        });
       }
-    });
-  }
 
-  // Animate slide elements in
-  function animateSlideIn(slide) {
-    const number = slide.querySelector(".project-number");
-    const plus = slide.querySelector(".project-plus");
-    const title = slide.querySelector("h2");
-    const desc = slide.querySelector("p");
-    const link = slide.querySelector(".project-link");
-    const media = slide.querySelector(".project-media");
-    const img = slide.querySelector(".project-img");
-
-    gsap.set([number, plus, title, desc, link], { opacity: 0, y: 30 });
-    gsap.set(media, { opacity: 0, scale: 0.95 });
-    gsap.set(img, { scale: 1.1 });
-
-    const tl = gsap.timeline();
-
-    tl.to(number, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" })
-      .to(
-        plus,
-        { opacity: 0.4, y: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.6",
-      )
-      .to(
-        title,
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.5",
-      )
-      .to(
-        desc,
-        { opacity: 0.9, y: 0, duration: 0.8, ease: "power2.out" },
-        "-=0.6",
-      )
-      .to(
-        link,
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.5",
-      )
-      .to(
-        media,
-        { opacity: 1, scale: 1, duration: 1, ease: "power3.out" },
-        "-=1",
-      )
-      .to(img, { scale: 1, duration: 1, ease: "power3.out" }, "-=1");
-  }
-
-  // Handle scroll within projects
-  function handleProjectScroll(direction) {
-    if (isTransitioning) return;
-
-    const newIndex = currentSlide + direction;
-
-    // If at bounds, allow normal scroll
-    if (newIndex < 0 || newIndex >= projectSlides.length) {
-      isInProjectsSection = false;
-      return;
-    }
-
-    isTransitioning = true;
-    currentSlide = newIndex;
-    showSlide(currentSlide);
-
-    // Calculate target scroll position
-    const bounds = getSectionBounds();
-    const slideHeight = window.innerHeight;
-    const targetScroll = bounds.top + currentSlide * slideHeight;
-
-    gsap.to(window, {
-      duration: 1.2,
-      scrollTo: targetScroll,
-      ease: "power3.inOut",
-      onComplete: () => {
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 300);
-      },
-    });
-  }
-
-  // Monitor scroll position
-  let scrollTimeout;
-  window.addEventListener("scroll", () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      checkInSection();
-
-      if (isInProjectsSection && !isTransitioning) {
-        const bounds = getSectionBounds();
-        const scroll = window.scrollY;
-        const slideHeight = window.innerHeight;
-        const relativeScroll = scroll - bounds.top;
-        const calculatedSlide = Math.round(relativeScroll / slideHeight);
-
-        if (
-          calculatedSlide !== currentSlide &&
-          calculatedSlide >= 0 &&
-          calculatedSlide < projectSlides.length
-        ) {
-          currentSlide = calculatedSlide;
-          showSlide(currentSlide);
-        }
-      }
-    }, 50);
+      // Stagger animate cards
+      gsap.to(cards, {
+        opacity: 1,
+        y: 0,
+        duration: 4,
+        stagger: 0.2,
+        ease: "power2.out",
+      });
+    },
   });
 
-  // Initial setup
-  showSlide(0);
-  checkInSection();
+  // Horizontal scroll animation
+  gsap.to(track, {
+    x: -scrollDistance,
+    ease: "none",
+    scrollTrigger: {
+      trigger: projectsSection,
+      start: "top top",
+      end: () => `+=${scrollDistance}`,
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1,
+    },
+  });
+
+  console.log("Horizontal scroll initialized");
+});
+/////////////////////////////////////
+//// CURSOR
+/////////////////////////////////////
+var cursor = $(".cursor"),
+  follower = $(".cursor-follower");
+
+var posX = 0,
+  posY = 0;
+
+var mouseX = 0,
+  mouseY = 0;
+
+TweenMax.to({}, 0.016, {
+  repeat: -1,
+  onRepeat: function () {
+    posX += (mouseX - posX) / 9;
+    posY += (mouseY - posY) / 9;
+
+    TweenMax.set(follower, {
+      css: {
+        left: posX - 12,
+        top: posY - 12,
+      },
+    });
+
+    TweenMax.set(cursor, {
+      css: {
+        left: mouseX,
+        top: mouseY,
+      },
+    });
+  },
+});
+
+$(document).on("mousemove", function (e) {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Add active state on hover for links, buttons, and interactive elements
+$("a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img").on(
+  "mouseenter",
+  function () {
+    cursor.addClass("active");
+    follower.addClass("active");
+  },
+);
+
+$("a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img").on(
+  "mouseleave",
+  function () {
+    cursor.removeClass("active");
+    follower.removeClass("active");
+  },
+);
+/////////////////////////////////////
+//// HERO VIDEO PARALLAX
+/////////////////////////////////////
+document.addEventListener("DOMContentLoaded", () => {
+  const heroSection = document.querySelector(".hero-section");
+  const heroVideo = document.querySelector(".hero-video");
+
+  if (!heroSection || !heroVideo) return;
+
+  function updateParallax() {
+    const rect = heroSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Calculate progress from -1 to 1 as section moves through viewport
+    const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+    // Clamp between 0 and 1
+    const clampedProgress = Math.max(0, Math.min(1, progress));
+
+    // Apply parallax (adjust multiplier for strength)
+    const translateY = (clampedProgress - 0.5) * 150; // Adjust 150 for speed
+
+    heroVideo.style.transform = `translate3d(0, ${translateY}px, 0)`;
+  }
+
+  // Update on scroll
+  window.addEventListener("scroll", () => {
+    requestAnimationFrame(updateParallax);
+  });
+
+  // Initial update
+  updateParallax();
+
+  console.log("Hero parallax initialized");
 });
