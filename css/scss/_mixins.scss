@@ -1,3 +1,4 @@
+@use "variables" as *;
 @mixin section {
   min-height: 100vh;
   min-width: 100vw;
@@ -9,6 +10,7 @@
   margin: 0;
   padding: 0;
   position: relative;
+  background-color: $body-bg;
 }
 @mixin section-about {
   min-height: 70vh;
@@ -21,9 +23,10 @@
   margin: 0;
   padding: 0;
   position: relative;
+  background-color: $body-bg;
 }
 @mixin section-contact {
-  min-height: 60vh;
+  min-height: 40vh;
   min-width: 100vw;
   overflow: hidden;
   flex-wrap: wrap;
@@ -32,10 +35,12 @@
   align-items: center;
   margin: 0;
   padding: 0;
-  position: relative;
+  position: sticky;
+  bottom: 0;
+  z-index: 0;
 }
 @mixin section-grid-contact {
-  height: 70vh;
+  height: 40vh;
   width: 100vw;
   overflow: hidden;
   display: grid;

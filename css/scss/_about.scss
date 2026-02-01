@@ -3,6 +3,7 @@
 
 .about-section {
   @include section-about;
+  z-index: 3;
 
   .about-wrapper {
     .about-container {

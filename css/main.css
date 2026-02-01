@@ -6,6 +6,8 @@ body {
   margin: 0;
   height: 100vh;
   width: 100dvw;
+  position: relative;
+  cursor: none;
 }
 body.animating {
   overflow: hidden;
@@ -59,6 +61,44 @@ body.animating {
   opacity: 0.08;
 }
 
+.grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  z-index: 9996;
+  pointer-events: none;
+  animation: grainShift 6s steps(8) infinite;
+}
+
+@keyframes grainShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  14% {
+    transform: translate(-3%, -8%);
+  }
+  28% {
+    transform: translate(-12%, 4%);
+  }
+  42% {
+    transform: translate(6%, -20%);
+  }
+  57% {
+    transform: translate(-4%, 18%);
+  }
+  71% {
+    transform: translate(12%, -2%);
+  }
+  85% {
+    transform: translate(-8%, 12%);
+  }
+  100% {
+    transform: translate(3%, -4%);
+  }
+}
 .header {
   position: fixed;
   width: 100%;
@@ -115,6 +155,8 @@ body.animating {
   margin: 0;
   padding: 0;
   position: relative;
+  background-color: #0a0a0a;
+  z-index: 4;
 }
 .hero-section .hero-wrapper .hero-video {
   position: absolute;
@@ -176,25 +218,6 @@ body.animating {
   align-items: center;
   position: relative;
 }
-.hero-section .hero-wrapper .hero-container .socials {
-  grid-area: 5/1/5/2;
-  display: flex;
-  justify-self: start;
-  margin-left: 3rem;
-  flex-direction: column;
-  gap: 1rem;
-  z-index: 99999 !important;
-}
-.hero-section .hero-wrapper .hero-container .socials img {
-  filter: invert(1);
-  height: 2rem;
-  width: 2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.hero-section .hero-wrapper .hero-container .socials img:hover {
-  transform: scale(1.1);
-}
 .hero-section .hero-wrapper .hero-container h1 {
   color: #cac3c3;
   grid-area: 2/3/5/6;
@@ -224,8 +247,17 @@ body.animating {
   margin-bottom: 1rem;
   font-weight: 300;
 }
+.hero-section .hero-wrapper .hero-container h6 {
+  color: #cac3c3;
+  font-size: clamp(1rem, 5vw, 1rem);
+  margin-top: 1rem;
+  font-weight: 200;
+}
 .hero-section .hero-wrapper .hero-container .scroll-indicator {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 10;
   bottom: 5rem;
   opacity: 0.5;
@@ -264,6 +296,8 @@ body.animating {
   margin: 0;
   padding: 0;
   position: relative;
+  background-color: #0a0a0a;
+  z-index: 3;
 }
 .about-section .about-wrapper .about-container {
   height: 70vh;
@@ -430,7 +464,8 @@ body.animating {
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background: #0a0a0a;
+  z-index: 2;
+  background-color: #0a0a0a;
 }
 
 .projects-title {
@@ -796,7 +831,7 @@ body.animating {
   }
 }
 .contact-section {
-  min-height: 60vh;
+  min-height: 40vh;
   min-width: 100vw;
   overflow: hidden;
   flex-wrap: wrap;
@@ -805,10 +840,14 @@ body.animating {
   align-items: center;
   margin: 0;
   padding: 0;
-  position: relative;
+  position: sticky;
+  bottom: 0;
+  z-index: 0;
+  background-color: black;
+  z-index: 1;
 }
 .contact-section .contact-wrapper .contact-container {
-  height: 70vh;
+  height: 40vh;
   width: 100vw;
   overflow: hidden;
   display: grid;
@@ -819,4 +858,41 @@ body.animating {
   justify-items: center;
   align-items: center;
   position: relative;
+}
+.contact-section .contact-wrapper .contact-container h2 {
+  color: #cac3c3;
+  font-size: clamp(3rem, 10vw, 10rem);
+  grid-area: 3/1/4/5;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.contact-section .contact-wrapper .contact-container h1 {
+  color: #cac3c3;
+  font-size: clamp(3rem, 10vw, 10rem);
+  grid-area: 2/1/4/5;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.contact-section .contact-wrapper .contact-container h1 span {
+  font-weight: 200;
+  font-style: italic;
+  color: #ff9e00;
+}
+.contact-section .contact-wrapper .contact-container .socials {
+  grid-area: 2/5/5/8;
+  display: flex;
+  justify-self: start;
+  gap: 2rem;
+  z-index: 10;
+}
+.contact-section .contact-wrapper .contact-container .socials img {
+  filter: invert(1);
+  height: 5rem;
+  width: 5rem;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.contact-section .contact-wrapper .contact-container .socials img:hover {
+  transform: scale(1.1);
 }/*# sourceMappingURL=main.css.map */

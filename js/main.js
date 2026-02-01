@@ -415,26 +415,24 @@ $(document).on("mousemove", function (e) {
 });
 
 // Add active state on hover for links, buttons, and interactive elements
-$("a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img").on(
-  "mouseenter",
-  function () {
-    cursor.addClass("active");
-    follower.addClass("active");
-  },
-);
+$(
+  "a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img, .arrow",
+).on("mouseenter", function () {
+  cursor.addClass("active");
+  follower.addClass("active");
+});
 
-$("a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img").on(
-  "mouseleave",
-  function () {
-    cursor.removeClass("active");
-    follower.removeClass("active");
-  },
-);
+$(
+  "a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img, .arrow",
+).on("mouseleave", function () {
+  cursor.removeClass("active");
+  follower.removeClass("active");
+});
 /////////////////////////////////////
 //// HERO VIDEO PARALLAX
 /////////////////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
-  const heroSection = document.querySelector(".hero-section");
+  const heroSection = document.querySelector(".hero-wrapper");
   const heroVideo = document.querySelector(".hero-video");
 
   if (!heroSection || !heroVideo) return;

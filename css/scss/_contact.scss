@@ -2,10 +2,53 @@
 @use "variables" as *;
 .contact-section {
   @include section-contact;
+  background-color: black;
+  z-index: 1;
 
   .contact-wrapper {
     .contact-container {
       @include section-grid-contact;
+      h2 {
+        color: $h2-text;
+        font-size: clamp(3rem, 10vw, 10rem);
+        grid-area: 3/1/4/5;
+        letter-spacing: -0.02em;
+        margin: 0;
+      }
+      h1 {
+        color: $h2-text;
+        font-size: clamp(3rem, 10vw, 10rem);
+        grid-area: 2/1/4/5;
+        letter-spacing: -0.02em;
+        margin: 0;
+
+        span {
+          font-weight: 200;
+          font-style: italic;
+          color: $h1-text;
+        }
+      }
+      .socials {
+        grid-area: 2/5/5/8;
+        display: flex;
+        justify-self: start;
+
+        gap: 2rem;
+        z-index: 10;
+
+        img {
+          filter: invert(1);
+          height: 5rem;
+          width: 5rem;
+          opacity: 0.7;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
     }
   }
 }
