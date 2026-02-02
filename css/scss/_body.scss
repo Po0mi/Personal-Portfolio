@@ -102,3 +102,20 @@ body {
     transform: translate(3%, -4%);
   }
 }
+.cursor-coords {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $h2-text;
+  letter-spacing: 1px;
+  z-index: 1000;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cursor-coords span {
+  display: inline-block;
+  min-width: 45px;
+}

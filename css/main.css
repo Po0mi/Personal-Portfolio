@@ -99,6 +99,26 @@ body.animating {
     transform: translate(3%, -4%);
   }
 }
+.cursor-coords {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #cac3c3;
+  letter-spacing: 1px;
+  z-index: 1000;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.cursor-coords span {
+  display: inline-block;
+  min-width: 45px;
+}
+
 .header {
   position: fixed;
   width: 100%;
@@ -218,6 +238,16 @@ body.animating {
   align-items: center;
   position: relative;
 }
+.hero-section .hero-wrapper .hero-container .corner-meta {
+  grid-area: 5/1/6/2;
+  color: #cac3c3;
+  display: flex;
+  justify-self: start;
+  align-self: end;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  font-weight: 200;
+}
 .hero-section .hero-wrapper .hero-container h1 {
   color: #cac3c3;
   grid-area: 2/3/5/6;
@@ -245,13 +275,14 @@ body.animating {
   line-height: 0.6;
   margin-left: 6rem;
   margin-bottom: 1rem;
-  font-weight: 300;
+  font-weight: 100;
+  filter: brightness(0.8);
 }
 .hero-section .hero-wrapper .hero-container h6 {
   color: #cac3c3;
   font-size: clamp(1rem, 5vw, 1rem);
   margin-top: 1rem;
-  font-weight: 200;
+  font-weight: 100;
 }
 .hero-section .hero-wrapper .hero-container .scroll-indicator {
   position: absolute;
@@ -405,6 +436,7 @@ body.animating {
 }
 .about-section .about-wrapper .about-container .tech-section {
   grid-area: 4/3/5/7;
+  margin-top: 3rem;
   margin-left: 5rem;
 }
 @media (max-width: 1024px) {
@@ -869,9 +901,10 @@ body.animating {
 .contact-section .contact-wrapper .contact-container h1 {
   color: #cac3c3;
   font-size: clamp(3rem, 10vw, 10rem);
-  grid-area: 2/1/4/5;
+  grid-area: 2/1/4/6;
   letter-spacing: -0.02em;
   margin: 0;
+  margin-right: 5rem;
 }
 .contact-section .contact-wrapper .contact-container h1 span {
   font-weight: 200;

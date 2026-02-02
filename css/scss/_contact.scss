@@ -18,9 +18,10 @@
       h1 {
         color: $h2-text;
         font-size: clamp(3rem, 10vw, 10rem);
-        grid-area: 2/1/4/5;
+        grid-area: 2/1/4/6;
         letter-spacing: -0.02em;
         margin: 0;
+        margin-right: 5rem;
 
         span {
           font-weight: 200;

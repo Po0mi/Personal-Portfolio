@@ -324,8 +324,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = gsap.utils.toArray(".project-card");
   const bgTitle = document.querySelector(".projects-title h1");
 
-  // Calculate total width
-  const totalWidth = cards.length * window.innerWidth;
+  // Calculate total width with extra padding for the last card
+  const cardWidth = window.innerWidth;
+  const lastCardPadding = cardWidth * 0.3; // Extra 30% viewport width for last card
+  const totalWidth = cards.length * cardWidth + lastCardPadding;
   const scrollDistance = totalWidth - window.innerWidth;
 
   // Set initial states
@@ -428,38 +430,25 @@ $(
   cursor.removeClass("active");
   follower.removeClass("active");
 });
+
 /////////////////////////////////////
-//// HERO VIDEO PARALLAX
+//// CURSOR COORDINATES
 /////////////////////////////////////
-document.addEventListener("DOMContentLoaded", () => {
-  const heroSection = document.querySelector(".hero-wrapper");
-  const heroVideo = document.querySelector(".hero-video");
+// Get coordinate elements
+const coordsDisplay = document.getElementById("coords");
+const xDisplay = coordsDisplay.querySelector(".x");
+const yDisplay = coordsDisplay.querySelector(".y");
 
-  if (!heroSection || !heroVideo) return;
+// Update coordinates on mouse move
+document.addEventListener("mousemove", (e) => {
+  const x = String(e.clientX).padStart(3, "0");
+  const y = String(e.clientY).padStart(3, "0");
 
-  function updateParallax() {
-    const rect = heroSection.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    // Calculate progress from -1 to 1 as section moves through viewport
-    const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-
-    // Clamp between 0 and 1
-    const clampedProgress = Math.max(0, Math.min(1, progress));
-
-    // Apply parallax (adjust multiplier for strength)
-    const translateY = (clampedProgress - 0.5) * 150; // Adjust 150 for speed
-
-    heroVideo.style.transform = `translate3d(0, ${translateY}px, 0)`;
-  }
-
-  // Update on scroll
-  window.addEventListener("scroll", () => {
-    requestAnimationFrame(updateParallax);
-  });
-
-  // Initial update
-  updateParallax();
-
-  console.log("Hero parallax initialized");
+  xDisplay.textContent = `X: ${x}`;
+  yDisplay.textContent = `Y: ${y}`;
 });
+
+// Optional: Hide on mobile/touch devices
+if ("ontouchstart" in window) {
+  coordsDisplay.style.display = "none";
+}
