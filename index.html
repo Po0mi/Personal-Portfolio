@@ -10,9 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
+    <div class="corner-meta">Vol. 01 — 2026</div>
     <div class="cursor-coords" id="coords">
       <span class="x">X: 000</span> / <span class="y">Y: 000</span>
     </div>
@@ -39,12 +41,11 @@
           <source src="/assets/bg/bg.mp4" type="video/mp4" />
         </video>
         <div class="hero-container">
-          <div class="corner-meta">Vol. 01 — 2026</div>
-          <h1>FRONT<span>end</span> DEVELOPER</h1>
+          <h1>FRONT<span id="exploding-text">end</span> DEVELOPER</h1>
           <h2>PORTFOLIO</h2>
           <div class="scroll-indicator">
             <h6>EXPLORE MORE</h6>
-            <div class="arrow"></div>
+            <div class="arrow" id="arrow-indicator"></div>
           </div>
         </div>
       </div>
@@ -185,7 +186,7 @@
               src="/assets/discord-logo-thin-svgrepo-com.svg"
               alt="discord"
             />
-            <img src="/assets/github-svgrepo-com.svg" alt="discord" />
+            <img src="/assets/github-svgrepo-com.svg" alt="github" />
             <img src="/assets/google-mail-svgrepo-com.svg" alt="gmail" />
           </div>
         </div>
@@ -198,5 +199,74 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/main.js"></script>
+    <script type="module">
+      import {
+        createScope,
+        createTimeline,
+        stagger,
+        text,
+        utils,
+      } from "https://esm.sh/animejs";
+
+      createScope({
+        root: "#exploding-text",
+      }).add((scope) => {
+        const { root, methods } = scope;
+
+        const { chars } = text.split(root, {
+          chars: true,
+        });
+
+        scope.add("onEnter", () => {
+          createTimeline().add(
+            chars,
+            {
+              x: {
+                to: () => utils.random(-3, 3) + "rem",
+                duration: () => utils.random(150, 500),
+              },
+
+              y: () => utils.random(-5, 5) + "rem",
+
+              rotate: () => utils.random(-180, 180),
+
+              duration: () => utils.random(200, 750),
+              ease: "outCirc",
+              composition: "blend",
+            },
+            stagger(5, {
+              from: "random",
+            }),
+          );
+        });
+
+        scope.add("onLeave", () => {
+          createTimeline().add(
+            chars,
+            {
+              x: {
+                to: 0,
+                delay: 75,
+              },
+              y: 0,
+              duration: () => utils.random(200, 400),
+              rotate: {
+                to: 0,
+                delay: 150,
+                duration: () => utils.random(300, 400),
+              },
+              ease: "inOut(2)",
+              composition: "blend",
+            },
+            stagger(10, {
+              from: "random",
+            }),
+          );
+        });
+
+        root.addEventListener("pointerenter", methods.onEnter);
+        root.addEventListener("pointerleave", methods.onLeave);
+      });
+    </script>
   </body>
 </html>

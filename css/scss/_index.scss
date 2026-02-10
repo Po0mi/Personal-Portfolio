@@ -56,16 +56,6 @@
 
     .hero-container {
       @include section-grid;
-      .corner-meta {
-        grid-area: 5/1/6/2;
-        color: $h2-text;
-        display: flex;
-        justify-self: start;
-        align-self: end;
-        margin-bottom: 1rem;
-        margin-left: 2rem;
-        font-weight: 200;
-      }
       h1 {
         color: $h2-text;
         grid-area: 2/3/5/6;
@@ -114,7 +104,7 @@
         opacity: 0.5;
         left: 50%;
         transform: translateX(-50%);
-        cursor: pointer;
+        cursor: none;
 
         .arrow {
           width: 1rem;

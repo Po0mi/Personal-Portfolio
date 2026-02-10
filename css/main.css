@@ -106,7 +106,6 @@ body.animating {
   font-size: 1rem;
   font-weight: 300;
   color: #cac3c3;
-  letter-spacing: 1px;
   z-index: 1000;
   pointer-events: none;
   -webkit-user-select: none;
@@ -117,6 +116,16 @@ body.animating {
 .cursor-coords span {
   display: inline-block;
   min-width: 45px;
+}
+
+.corner-meta {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #cac3c3;
+  z-index: 1000;
 }
 
 .header {
@@ -238,16 +247,6 @@ body.animating {
   align-items: center;
   position: relative;
 }
-.hero-section .hero-wrapper .hero-container .corner-meta {
-  grid-area: 5/1/6/2;
-  color: #cac3c3;
-  display: flex;
-  justify-self: start;
-  align-self: end;
-  margin-bottom: 1rem;
-  margin-left: 2rem;
-  font-weight: 200;
-}
 .hero-section .hero-wrapper .hero-container h1 {
   color: #cac3c3;
   grid-area: 2/3/5/6;
@@ -294,7 +293,7 @@ body.animating {
   opacity: 0.5;
   left: 50%;
   transform: translateX(-50%);
-  cursor: pointer;
+  cursor: none;
 }
 .hero-section .hero-wrapper .hero-container .scroll-indicator .arrow {
   width: 1rem;
@@ -875,7 +874,7 @@ body.animating {
   position: sticky;
   bottom: 0;
   z-index: 0;
-  background-color: black;
+  background-color: transparent;
   z-index: 1;
 }
 .contact-section .contact-wrapper .contact-container {

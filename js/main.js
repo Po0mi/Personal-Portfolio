@@ -418,7 +418,7 @@ $(document).on("mousemove", function (e) {
 
 // Add active state on hover for links, buttons, and interactive elements
 $(
-  "a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img, .arrow",
+  "a, button, .link, .nav-link, .view-btn, .badge, .project-visual, img, .arrow, span",
 ).on("mouseenter", function () {
   cursor.addClass("active");
   follower.addClass("active");
@@ -452,3 +452,24 @@ document.addEventListener("mousemove", (e) => {
 if ("ontouchstart" in window) {
   coordsDisplay.style.display = "none";
 }
+/////////////////////////////////////
+//// META CORNER & COORDINATES
+/////////////////////////////////////
+// Combined: Entry + Interactive
+gsap.from(".corner-meta", {
+  x: -30,
+  opacity: 0,
+  rotation: -5,
+  duration: 1,
+  ease: "expo.out",
+  delay: 0.5,
+});
+
+gsap.from(".cursor-coords", {
+  x: 30,
+  opacity: 0,
+  rotation: 5,
+  duration: 1,
+  ease: "expo.out",
+  delay: 0.5,
+});

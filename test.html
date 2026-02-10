@@ -3,451 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Wireframe - Editorial Style</title>
+    <title>Raining Letters - Frontend Developer</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
         font-family: Arial, sans-serif;
-        background: #f5f5f5;
-        padding: 40px 20px;
-      }
-
-      .wireframe-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        background: white;
-        padding: 20px;
-      }
-
-      .wireframe-section {
-        border: 2px solid #333;
-        margin-bottom: 40px;
-        padding: 20px;
-        position: relative;
-      }
-
-      .section-label {
-        position: absolute;
-        top: -12px;
-        left: 20px;
-        background: white;
-        padding: 0 10px;
-        font-weight: bold;
-        font-size: 12px;
-        text-transform: uppercase;
-      }
-
-      .grid {
-        display: grid;
-        gap: 20px;
-      }
-
-      .grid-2 {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .grid-3 {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-      .box {
-        border: 2px dashed #999;
-        padding: 20px;
-        min-height: 100px;
         display: flex;
-        align-items: center;
         justify-content: center;
-        text-align: center;
-        font-size: 14px;
-        color: #666;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: #f0f0f0;
       }
 
-      .hero-box {
-        min-height: 400px;
-        font-size: 18px;
-      }
-
-      .tall-box {
-        min-height: 300px;
-      }
-
-      .corner-element {
-        position: absolute;
-        font-size: 10px;
-        color: #999;
-      }
-
-      .top-left {
-        top: 10px;
-        left: 10px;
-      }
-      .top-right {
-        top: 10px;
-        right: 10px;
-      }
-      .bottom-left {
-        bottom: 10px;
-        left: 10px;
-      }
-      .bottom-right {
-        bottom: 10px;
-        right: 10px;
-      }
-
-      .metadata {
-        font-size: 11px;
-        color: #999;
-        margin-top: 10px;
-      }
-
-      h3 {
-        margin-bottom: 20px;
+      h1 {
+        font-size: 60px;
         color: #333;
       }
 
-      .annotation {
-        font-size: 12px;
-        color: #ff6b00;
-        margin: 10px 0;
-        font-style: italic;
+      #raining-letters {
+        display: inline-block;
+        position: relative;
+        color: #0066cc;
+        cursor: pointer;
+      }
+
+      /* Add some visual feedback */
+      #raining-letters:hover {
+        text-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+      }
+
+      .instruction {
+        position: absolute;
+        bottom: 20px;
+        color: #666;
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <div class="wireframe-container">
-      <h1 style="margin-bottom: 30px; text-align: center">
-        Portfolio Wireframe - Editorial/Poster Style
-      </h1>
+    <!-- Your exact HTML structure -->
+    <h1>FRONT<span id="raining-letters">end</span> DEVELOPER</h1>
 
-      <!-- Hero Section -->
-      <div class="wireframe-section">
-        <span class="section-label">01 - Hero Section</span>
-        <div class="corner-element top-left">X: 000 / Y: 000</div>
-        <div class="corner-element top-right">DAN GABRIELLE DE CASTRO</div>
-        <div class="corner-element bottom-left">SCROLL TO EXPLORE ↓</div>
-        <div class="corner-element bottom-right">Vol. 01 — 2026</div>
+    <div class="instruction">Hover over "end" to see raining effect</div>
 
-        <div class="box hero-box">
-          <div>
-            <div style="font-size: 48px; font-weight: bold">
-              FRONT<span style="color: #ff9500">END</span><br />DEVELOPER
-            </div>
-            <div style="margin-top: 20px; font-size: 14px">PORTFOLIO</div>
-            <div class="annotation">+ Large outlined background text</div>
-            <div class="annotation">
-              + Gradient blob shapes with grain texture
-            </div>
-            <div class="annotation">
-              + Metadata corners (coords, version, name)
-            </div>
-          </div>
-        </div>
-      </div>
+    <script type="module">
+      import {
+        createScope,
+        createTimeline,
+        stagger,
+        text,
+        createSpring,
+      } from "https://esm.sh/animejs";
 
-      <!-- About Section -->
-      <div class="wireframe-section">
-        <span class="section-label">02 - About Section</span>
-        <div class="corner-element top-right">ABOUT — INFO</div>
-        <div class="corner-element bottom-left">01</div>
+      createScope({
+        root: "#raining-letters",
+      }).add((scope) => {
+        const { root, methods } = scope;
 
-        <div class="grid grid-2">
-          <div class="box tall-box">
-            <div>
-              <div
-                style="font-size: 36px; font-weight: bold; margin-bottom: 20px"
-              >
-                ABOUT<br />ME
-              </div>
-              <div class="annotation">+ Large display type</div>
-              <div class="annotation">+ Vertical text on edge</div>
-            </div>
-          </div>
-          <div class="box tall-box">
-            <div style="text-align: left; width: 100%">
-              <div style="margin-bottom: 15px">
-                Introduction paragraph with proper typography...
-              </div>
-              <div style="margin-bottom: 15px">
-                Skills badges with hover states...
-              </div>
-              <div class="metadata">
-                4TH YEAR IT STUDENT / CENTRAL PHILIPPINE UNIVERSITY
-              </div>
-              <div class="annotation">+ Justified text blocks</div>
-              <div class="annotation">+ Small caps metadata</div>
-            </div>
-          </div>
-        </div>
-      </div>
+        // Split the "end" text inside the span
+        text.split(root, {
+          chars: {
+            class: "char",
+            clone: "top",
+            wrap: "clip",
+          },
+        });
 
-      <!-- Featured Projects -->
-      <div class="wireframe-section">
-        <span class="section-label">03 - Featured Projects</span>
-        <div class="corner-element top-left">SELECTED WORKS</div>
-        <div class="corner-element top-right">2024 — 2026</div>
-        <div class="corner-element bottom-right">02</div>
+        const ease = createSpring({
+          stiffness: 90,
+          damping: 11,
+        });
 
-        <h3>Large Background Text: "FEATURED PROJECTS"</h3>
+        scope.add("onEnter", () => {
+          createTimeline().add(
+            ".char > span",
+            {
+              y: "100%",
+              composition: "blend",
+              ease,
+            },
+            stagger(10, {
+              use: "data-char",
+              from: "random",
+            }),
+          );
+        });
 
-        <!-- Project Card 1 -->
-        <div
-          style="
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
-          "
-        >
-          <div
-            style="position: absolute; top: 10px; left: 10px; font-size: 10px"
-          >
-            +
-          </div>
-          <div
-            style="position: absolute; top: 10px; right: 10px; font-size: 10px"
-          >
-            +
-          </div>
+        scope.add("onLeave", () => {
+          createTimeline().add(
+            ".char > span",
+            {
+              y: "0%",
+              composition: "blend",
+              ease,
+            },
+            stagger(10, {
+              use: "data-char",
+              from: "random",
+            }),
+          );
+        });
 
-          <div class="grid grid-2" style="gap: 30px">
-            <div class="box" style="min-height: 300px">
-              <div>Project Screenshot<br />with grain overlay</div>
-            </div>
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              "
-            >
-              <div>
-                <div style="font-size: 10px; color: #999; margin-bottom: 10px">
-                  01
-                </div>
-                <h3 style="font-size: 28px; margin-bottom: 15px">
-                  Red Cross Management System
-                </h3>
-                <p
-                  style="font-size: 14px; line-height: 1.6; margin-bottom: 20px"
-                >
-                  A comprehensive PHP-based management system serving 500+ daily
-                  users...
-                </p>
-                <div class="grid grid-3" style="gap: 10px; margin-bottom: 20px">
-                  <div class="box" style="min-height: 40px; font-size: 12px">
-                    PHP
-                  </div>
-                  <div class="box" style="min-height: 40px; font-size: 12px">
-                    MySQL
-                  </div>
-                  <div class="box" style="min-height: 40px; font-size: 12px">
-                    JavaScript
-                  </div>
-                </div>
-              </div>
-              <div class="box" style="min-height: 50px">View Project →</div>
-              <div class="metadata" style="margin-top: 15px">
-                COMMISSIONED WORK — 2024<br />
-                500+ DAILY USERS / REAL-TIME NOTIFICATIONS
-              </div>
-            </div>
-          </div>
-
-          <div
-            style="
-              position: absolute;
-              bottom: 10px;
-              left: 10px;
-              font-size: 10px;
-            "
-          >
-            +
-          </div>
-          <div
-            style="
-              position: absolute;
-              bottom: 10px;
-              right: 10px;
-              font-size: 10px;
-            "
-          >
-            +
-          </div>
-        </div>
-
-        <!-- Project Card 2 -->
-        <div style="border: 1px solid #ddd; padding: 20px; position: relative">
-          <div
-            style="position: absolute; top: 10px; left: 10px; font-size: 10px"
-          >
-            +
-          </div>
-          <div
-            style="position: absolute; top: 10px; right: 10px; font-size: 10px"
-          >
-            +
-          </div>
-
-          <div class="grid grid-2" style="gap: 30px">
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              "
-            >
-              <div>
-                <div style="font-size: 10px; color: #999; margin-bottom: 10px">
-                  02
-                </div>
-                <h3 style="font-size: 28px; margin-bottom: 15px">
-                  Portfolio Website
-                </h3>
-                <p
-                  style="font-size: 14px; line-height: 1.6; margin-bottom: 20px"
-                >
-                  A modern portfolio showcase featuring GSAP animations...
-                </p>
-                <div class="grid grid-3" style="gap: 10px; margin-bottom: 20px">
-                  <div class="box" style="min-height: 40px; font-size: 12px">
-                    SCSS
-                  </div>
-                  <div class="box" style="min-height: 40px; font-size: 12px">
-                    GSAP
-                  </div>
-                  <div class="box" style="min-height: 40px; font-size: 12px">
-                    Three.js
-                  </div>
-                </div>
-              </div>
-              <div class="box" style="min-height: 50px">View Project →</div>
-              <div class="metadata" style="margin-top: 15px">
-                PERSONAL PROJECT — 2025<br />
-                JAPANESE-INSPIRED AESTHETIC / RESPONSIVE DESIGN
-              </div>
-            </div>
-            <div class="box" style="min-height: 300px">
-              <div>Project Screenshot<br />with grain overlay</div>
-            </div>
-          </div>
-
-          <div
-            style="
-              position: absolute;
-              bottom: 10px;
-              left: 10px;
-              font-size: 10px;
-            "
-          >
-            +
-          </div>
-          <div
-            style="
-              position: absolute;
-              bottom: 10px;
-              right: 10px;
-              font-size: 10px;
-            "
-          >
-            +
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Section -->
-      <div class="wireframe-section">
-        <span class="section-label">04 - Contact Section</span>
-        <div class="corner-element top-left">GET IN TOUCH</div>
-        <div class="corner-element bottom-right">03</div>
-
-        <div class="box tall-box">
-          <div>
-            <div
-              style="font-size: 48px; font-weight: bold; margin-bottom: 20px"
-            >
-              Get
-              <span style="font-style: italic; color: #ff9500">in</span> touch
-            </div>
-            <div class="grid grid-3" style="gap: 30px; margin-top: 40px">
-              <div class="box">Icon + Link<br />Facebook</div>
-              <div class="box">Icon + Link<br />Instagram</div>
-              <div class="box">Icon + Link<br />GitHub</div>
-            </div>
-            <div class="annotation">+ Large background text</div>
-            <div class="annotation">+ Social icons with minimal style</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div class="wireframe-section">
-        <span class="section-label">05 - Footer</span>
-
-        <div class="grid grid-2">
-          <div class="box">
-            <div style="text-align: left">
-              © 2026 Dan Gabrielle De Castro<br />
-              <span style="font-size: 10px; color: #999"
-                >All rights reserved</span
-              >
-            </div>
-          </div>
-          <div class="box">
-            <div style="text-align: right; font-size: 10px; color: #999">
-              Designed & Developed by Dan Gabrielle De Castro<br />
-              Version 2.0 — Built with modern web technologies
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Design Notes -->
-      <div
-        style="
-          margin-top: 60px;
-          padding: 30px;
-          background: #f9f9f9;
-          border-left: 4px solid #ff9500;
-        "
-      >
-        <h3>Design System Notes</h3>
-        <div style="margin-top: 20px; line-height: 1.8">
-          <strong>Typography:</strong><br />
-          - Headlines: Bold condensed sans-serif (similar to your current
-          design)<br />
-          - Body: Clean sans-serif with proper line-height (1.6-1.8)<br />
-          - Metadata: Small caps, 10-12px, letter-spacing increased<br />
-          - Accent: Italic serif for emphasis words<br /><br />
-
-          <strong>Color Palette:</strong><br />
-          - Primary: #0a0a0a (deep black)<br />
-          - Accent: #ff9500 (orange)<br />
-          - Background: #f5f5f0 (warm off-white)<br />
-          - Text: #333333 (dark gray)<br />
-          - Metadata: #999999 (light gray)<br /><br />
-
-          <strong>Layout Elements:</strong><br />
-          - Grid coordinates and crop marks in corners<br />
-          - Large outlined background text (like "MELANCHOLIC SOFTNESS")<br />
-          - Plus (+) symbols as positioning markers<br />
-          - Section numbers (01, 02, 03)<br />
-          - Vertical text along edges<br />
-          - Grain texture overlay on images<br />
-          - Subtle paper texture on backgrounds<br /><br />
-
-          <strong>Interactive Elements:</strong><br />
-          - Cursor coordinates (top-right corner)<br />
-          - Smooth scroll indicators<br />
-          - Hover states reveal additional metadata<br />
-          - Magnetic button effects<br />
-          - Parallax on background elements
-        </div>
-      </div>
-    </div>
+        root.addEventListener("pointerenter", methods.onEnter);
+        root.addEventListener("pointerleave", methods.onLeave);
+      });
+    </script>
   </body>
 </html>
