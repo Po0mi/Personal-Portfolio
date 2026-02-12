@@ -4,10 +4,13 @@
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 let target = window.scrollY;
+let isNavScrolling = false; // Add this flag
 
 window.addEventListener(
   "wheel",
   (e) => {
+    if (isNavScrolling) return; // Skip if nav scrolling
+
     e.preventDefault();
     target += e.deltaY;
 
@@ -42,18 +45,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (targetSection) {
         const targetPosition = targetSection.offsetTop;
-        target = targetPosition; // update smooth scroll target
+        target = targetPosition;
+
+        // Set flag to disable wheel listener
+        isNavScrolling = true;
+
+        // Kill any ongoing ScrollTrigger animations
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (trigger.trigger === targetSection) {
+            trigger.disable();
+            setTimeout(() => trigger.enable(), 2000); // Re-enable after scroll
+          }
+        });
 
         gsap.to(window, {
           duration: 1.5,
           scrollTo: targetPosition,
           ease: "power2.inOut",
+          onComplete: () => {
+            isNavScrolling = false; // Reset flag
+          },
         });
       }
     });
   });
 });
-
 /////////////////////////////////////
 //// HEADER ANIMATIONS
 /////////////////////////////////////
@@ -472,4 +488,75 @@ gsap.from(".cursor-coords", {
   duration: 1,
   ease: "expo.out",
   delay: 0.5,
+});
+/////////////////////////////////////
+/// PRINCIPLES SCROLL ANIMATIONS
+/////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Animate principle sections on scroll
+  gsap.registerPlugin(ScrollTrigger);
+
+  const principles = document.querySelectorAll(".principle");
+
+  principles.forEach((principle, index) => {
+    // Get elements within each principle
+    const number = principle.querySelector(
+      index === principles.length - 1
+        ? ".principle-number-last"
+        : ".principle-number",
+    );
+    const title = principle.querySelector(".title");
+    const paragraphs = principle.querySelectorAll(".story p");
+
+    // Set initial states
+    gsap.set(number, { x: -50, opacity: 0, scale: 0.8 });
+    gsap.set(title, { y: 30, opacity: 0 });
+    gsap.set(paragraphs, { y: 20, opacity: 0 });
+
+    // Create scroll-triggered timeline for each principle
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: principle,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse",
+        // Uncomment to see trigger points during development
+        // markers: true,
+      },
+      defaults: { ease: "power2.out" },
+    });
+
+    // Animate principle elements in sequence
+    tl.to(
+      number,
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+      },
+      0,
+    )
+      .to(
+        title,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+        },
+        0.2,
+      )
+      .to(
+        paragraphs,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.15,
+        },
+        0.4,
+      );
+  });
 });

@@ -6,6 +6,18 @@
   z-index: 1;
 
   .contact-wrapper {
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      height: 120vh;
+      object-fit: cover;
+      transform-origin: center center;
+      will-change: transform;
+      filter: brightness(0.5) contrast(1.1) sepia(0.4);
+    }
     .contact-container {
       @include section-grid-contact;
       h2 {
@@ -33,9 +45,21 @@
         grid-area: 2/5/5/8;
         display: flex;
         justify-self: start;
-
         gap: 2rem;
         z-index: 10;
+
+        .image-with-label {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .image-with-label .label {
+          font-size: 0.9rem;
+          color: $h2-text;
+          text-decoration: none;
+        }
 
         img {
           filter: invert(1);
