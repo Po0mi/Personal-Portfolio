@@ -2,7 +2,7 @@
 @use "variables" as *;
 .contact-section {
   @include section-contact;
-  background-color: transparent;
+  background-color: black;
   z-index: 1;
 
   .contact-wrapper {
