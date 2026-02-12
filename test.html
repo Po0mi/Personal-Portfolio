@@ -3,110 +3,366 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raining Letters - Frontend Developer</title>
+    <title>How I work · portfolio · principles</title>
+    <!-- Poppins font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      /* 
+      PORTFOLIO STYLE — 100vh sections, sticky numbers
+      Semantic: <section> for each principle (thematic grouping)
+      Clean, professional, intentional
+    */
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+        background: #0a1416;
+        color: #ecf3f0;
+        font-family: "Poppins", sans-serif;
         margin: 0;
-        background: #f0f0f0;
+        padding: 0;
       }
 
-      h1 {
-        font-size: 60px;
-        color: #333;
+      p {
+        margin: 0 0 18px 0;
+        line-height: 1.7;
       }
 
-      #raining-letters {
-        display: inline-block;
+      a {
+        color: #ffcb99;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 203, 153, 0.3);
+        transition: border 0.2s;
+      }
+
+      a:hover {
+        border-bottom-color: #ffcb99;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .container {
+        width: 95%;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      h1.center {
+        font-size: 4.2rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        margin: 0;
+        padding: 0.8em 0 0.3em;
+        text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+        color: #ffdfb3;
+        word-break: break-word;
+      }
+
+      /* ---------- EACH PRINCIPLE = 100vh SECTION ---------- */
+      .principle {
+        display: flex;
+        align-items: flex-start;
+        gap: 2.5rem;
+
+        /* Full viewport height — one principle per screen */
+        min-height: 80vh;
+        width: 100%;
+
+        padding: 3vh 0 5vh;
+        margin-bottom: 0;
+
         position: relative;
-        color: #0066cc;
-        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 210, 170, 0.08);
       }
 
-      /* Add some visual feedback */
-      #raining-letters:hover {
-        text-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+      /* ---- sticky number – travels within its 100vh parent ---- */
+      .principle__number {
+        font-size: 10vw;
+        font-weight: 800;
+        line-height: 0.9;
+        padding: 0.1em 0;
+
+        /* Sticky within the section */
+        position: sticky;
+        top: 25px;
+        align-self: start;
+
+        flex: 0 0 auto;
+        width: 160px;
+        max-width: 180px;
+
+        text-align: center;
+        color: rgba(255, 220, 170, 0.2);
+        -webkit-text-stroke: 2.5px rgba(255, 200, 150, 0.55);
+        text-stroke: 2.5px rgba(255, 200, 150, 0.55);
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        letter-spacing: 6px;
+        transition: all 0.15s ease;
       }
 
-      .instruction {
-        position: absolute;
-        bottom: 20px;
-        color: #666;
-        font-size: 14px;
+      .principle:hover .principle__number {
+        color: rgba(255, 235, 200, 0.4);
+        -webkit-text-stroke-color: #ffc891;
+      }
+
+      /* ---- content panel ---- */
+      .principle__content {
+        border-top: 3px solid #93a9a2;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        grid-gap: 24px;
+        padding: 28px 0 28px 12px;
+        flex: 1;
+        min-width: 0;
+        margin-top: 2vh;
+      }
+
+      .principle__content .title {
+        font-weight: 700;
+        font-size: 1.9rem;
+        line-height: 1.2;
+        color: #ffcf9a;
+        letter-spacing: -0.01em;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .principle__content .story {
+        line-height: 1.75;
+        font-size: 1.12rem;
+        color: #f2f9f5;
+      }
+
+      .principle__content .story p {
+        margin-bottom: 1.3rem;
+      }
+
+      /* ---------- responsive ---------- */
+      @media (max-width: 800px) {
+        .principle {
+          flex-direction: column;
+          gap: 0.5rem;
+          min-height: 100vh;
+          padding: 4vh 0 6vh;
+        }
+
+        .principle__number {
+          position: sticky;
+          top: 10px;
+          font-size: 16vw;
+          width: 100%;
+          max-width: 100%;
+          text-align: left;
+          padding: 0.1rem 0 0.2rem 0.2rem;
+          -webkit-text-stroke: 2px rgba(255, 200, 150, 0.65);
+          background: linear-gradient(to right, #0a1416 70%, transparent);
+          z-index: 15;
+          letter-spacing: 5px;
+        }
+
+        .principle__content {
+          grid-template-columns: 1fr;
+          padding-top: 10px;
+          width: 100%;
+          margin-top: 1vh;
+        }
+
+        .principle__content .title {
+          font-size: 2.1rem;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .principle__content .title {
+          font-size: 1.9rem;
+        }
+        .principle__content .story {
+          font-size: 1.05rem;
+        }
+        h1.center {
+          font-size: 3rem;
+          padding: 0.6em 0 0.3em;
+        }
+      }
+
+      /* attribution */
+      h3.center {
+        margin: 2rem auto 2.5rem;
+        padding: 2rem 0 1.5rem;
+        font-weight: 350;
+        font-size: 1.25rem;
+        border-top: 1px solid rgba(255, 200, 150, 0.3);
+        color: #cbd5d0;
+        width: 95%;
+        max-width: 1220px;
+      }
+
+      h3.center a {
+        color: #ffdba4;
+        font-weight: 500;
+      }
+
+      .highlight {
+        color: #ffdfb3;
+        font-weight: 600;
+      }
+
+      .principle:last-of-type {
+        border-bottom: none;
       }
     </style>
   </head>
   <body>
-    <!-- Your exact HTML structure -->
-    <h1>FRONT<span id="raining-letters">end</span> DEVELOPER</h1>
+    <div class="container">
+      <h1 class="center">HOW I WORK</h1>
 
-    <div class="instruction">Hover over "end" to see raining effect</div>
+      <!-- 
+      ==========  PORTFOLIO PRINCIPLES — SEMANTIC SECTIONS  ==========
+      Each <section> represents a thematic principle.
+      Perfect for a portfolio: part of one cohesive document,
+      not standalone articles.
+    -->
 
-    <script type="module">
-      import {
-        createScope,
-        createTimeline,
-        stagger,
-        text,
-        createSpring,
-      } from "https://esm.sh/animejs";
+      <!-- SECTION 00 – FRAMEWORK -->
+      <section class="principle">
+        <div class="principle__number">00</div>
+        <div class="principle__content">
+          <div class="title">Framework</div>
+          <div class="story">
+            <p>
+              <span class="highlight"
+                >Principles that guide my development.</span
+              >
+              Not rigid rules, but a living compass. Every line of code, every
+              layout decision is shaped by these beliefs. They keep me grounded
+              and moving forward.
+            </p>
+            <p>
+              Clean. Human. Performant. Transparent. Ever‑evolving. <br />This
+              is how I build for the web.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      createScope({
-        root: "#raining-letters",
-      }).add((scope) => {
-        const { root, methods } = scope;
+      <!-- SECTION 01 – CLEAN CODE -->
+      <section class="principle">
+        <div class="principle__number">01</div>
+        <div class="principle__content">
+          <div class="title">CLEAN CODE</div>
+          <div class="story">
+            <p>
+              I focus on writing readable, structured, and maintainable code
+              that is easy to scale and improve over time. Indentation, naming,
+              modularity — these aren't afterthoughts, they're core to
+              resilience. Whether it's CSS or JavaScript, I favor clarity over
+              cleverness.
+            </p>
+            <p>
+              “Always code as if the person who ends up maintaining your code is
+              a violent psychopath who knows where you live.” — I embrace that
+              spirit with kindness.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        // Split the "end" text inside the span
-        text.split(root, {
-          chars: {
-            class: "char",
-            clone: "top",
-            wrap: "clip",
-          },
-        });
+      <!-- SECTION 02 – USER-FIRST -->
+      <section class="principle">
+        <div class="principle__number">02</div>
+        <div class="principle__content">
+          <div class="title">USER-FIRST</div>
+          <div class="story">
+            <p>
+              I design and build with the user in mind, making sure layouts are
+              intuitive, accessible, and responsive on all devices. Every
+              component should feel natural — from touch targets to color
+              contrast, from keyboard navigation to reduced motion preferences.
+              Empathy is a requirement.
+            </p>
+            <p>No dark patterns. Just honest, frictionless interfaces.</p>
+          </div>
+        </div>
+      </section>
 
-        const ease = createSpring({
-          stiffness: 90,
-          damping: 11,
-        });
+      <!-- SECTION 03 – PERFORMANCE -->
+      <section class="principle">
+        <div class="principle__number">03</div>
+        <div class="principle__content">
+          <div class="title">PERFORMANCE</div>
+          <div class="story">
+            <p>
+              I pay attention to performance by optimizing assets, minimizing
+              unnecessary code, and ensuring smooth interactions. Fast load
+              times, efficient reflows, and lightweight builds are not "nice to
+              have" — they're part of the user experience.
+            </p>
+            <p>
+              Lazy loading, code splitting, critical CSS, modern formats. I keep
+              an eye on the metrics that matter.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        scope.add("onEnter", () => {
-          createTimeline().add(
-            ".char > span",
-            {
-              y: "100%",
-              composition: "blend",
-              ease,
-            },
-            stagger(10, {
-              use: "data-char",
-              from: "random",
-            }),
-          );
-        });
+      <!-- SECTION 04 – CLEAR COMMUNICATION -->
+      <section class="principle">
+        <div class="principle__number">04</div>
+        <div class="principle__content">
+          <div class="title">COMMUNICATION</div>
+          <div class="story">
+            <p>
+              I value clarity and transparency — sharing progress, explaining
+              decisions, and aligning solutions with real requirements. Whether
+              it's code comments, pull requests, or client conversations, I aim
+              to be direct and respectful.
+            </p>
+            <p>
+              Assumptions are dangerous. Questions are welcome. Documentation is
+              a gift to my future self.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        scope.add("onLeave", () => {
-          createTimeline().add(
-            ".char > span",
-            {
-              y: "0%",
-              composition: "blend",
-              ease,
-            },
-            stagger(10, {
-              use: "data-char",
-              from: "random",
-            }),
-          );
-        });
+      <!-- SECTION 05 – CONTINUOUS LEARNING -->
+      <section class="principle">
+        <div class="principle__number">05</div>
+        <div class="principle__content">
+          <div class="title">LEARNING</div>
+          <div class="story">
+            <p>
+              I actively improve my skills by exploring new tools, techniques,
+              and best practices in modern web development. The landscape shifts
+              — I shift with it. I experiment, break things, read specs, and
+              share insights.
+            </p>
+            <p>
+              From container queries to AI‑assisted workflows, I stay curious
+              and humble.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- end container -->
 
-        root.addEventListener("pointerenter", methods.onEnter);
-        root.addEventListener("pointerleave", methods.onLeave);
-      });
-    </script>
+    <!-- credit line -->
+    <h3 class="center">
+      <a
+        href="https://www.instagram.com/aristidebenoist/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Inspired by Aristide Benoist</a
+      >
+    </h3>
   </body>
 </html>

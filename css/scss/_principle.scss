@@ -1,0 +1,140 @@
+@use "mixins" as *;
+@use "variables" as *;
+
+.principle {
+  min-height: 80vh;
+  min-width: 100vw;
+  overflow: visible;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  margin: 0;
+  padding: 4rem 2rem;
+  position: relative;
+  background-color: $body-bg;
+  z-index: 8;
+
+  .principle-number {
+    font-size: 10vw;
+    font-weight: 800;
+    line-height: 0.9;
+    padding: 0.1em 0;
+    margin-right: 2rem;
+    color: $h1-text;
+    position: sticky;
+    top: 25px;
+    align-self: flex-start;
+    flex: 0 0 auto;
+    width: 160px;
+    max-width: 180px;
+    height: fit-content;
+  }
+  .principle-number-last {
+    font-size: 10vw;
+    font-weight: 800;
+    line-height: 0.9;
+    padding: 0.1em 0;
+    margin-right: 2rem;
+    color: $h1-text;
+    top: 25px;
+    align-self: flex-start;
+    flex: 0 0 auto;
+    width: 160px;
+    max-width: 180px;
+    height: fit-content;
+  }
+
+  .principle-content {
+    flex: 1 1 auto;
+    max-width: 1000px;
+    padding: 2rem;
+    color: $h1-text;
+
+    .title {
+      font-size: clamp(2rem, 4vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.02em;
+      color: $h1-text;
+    }
+
+    .story {
+      p {
+        font-size: clamp(1rem, 1.3vw, 1.25rem);
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 2rem;
+        font-weight: 300;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .highlight {
+        color: $h1-text;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .principle {
+    gap: 2rem;
+    padding: 3rem 1.5rem;
+
+    .principle-number {
+      font-size: clamp(3rem, 10vw, 8rem);
+      width: 120px;
+      margin-right: 1rem;
+    }
+
+    .principle-content {
+      padding: 1.5rem;
+
+      .title {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        margin-bottom: 2rem;
+      }
+
+      .story p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .principle {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+
+    .principle-number {
+      position: relative;
+      top: 0;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+
+    .principle-content {
+      padding: 1rem;
+
+      .title {
+        margin-bottom: 1.5rem;
+      }
+
+      .story p {
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
+}

@@ -861,6 +861,128 @@ body.animating {
     font-size: 0.9rem;
   }
 }
+.principle {
+  min-height: 80vh;
+  min-width: 100vw;
+  overflow: visible;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  margin: 0;
+  padding: 4rem 2rem;
+  position: relative;
+  background-color: #0a0a0a;
+  z-index: 8;
+}
+.principle .principle-number {
+  font-size: 10vw;
+  font-weight: 800;
+  line-height: 0.9;
+  padding: 0.1em 0;
+  margin-right: 2rem;
+  color: #ff9e00;
+  position: sticky;
+  top: 25px;
+  align-self: flex-start;
+  flex: 0 0 auto;
+  width: 160px;
+  max-width: 180px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.principle .principle-number-last {
+  font-size: 10vw;
+  font-weight: 800;
+  line-height: 0.9;
+  padding: 0.1em 0;
+  margin-right: 2rem;
+  color: #ff9e00;
+  top: 25px;
+  align-self: flex-start;
+  flex: 0 0 auto;
+  width: 160px;
+  max-width: 180px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.principle .principle-content {
+  flex: 1 1 auto;
+  max-width: 1000px;
+  padding: 2rem;
+  color: #ff9e00;
+}
+.principle .principle-content .title {
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+  color: #ff9e00;
+}
+.principle .principle-content .story p {
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.principle .principle-content .story p:last-child {
+  margin-bottom: 0;
+}
+.principle .principle-content .story .highlight {
+  color: #ff9e00;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .principle {
+    gap: 2rem;
+    padding: 3rem 1.5rem;
+  }
+  .principle .principle-number {
+    font-size: clamp(3rem, 10vw, 8rem);
+    width: 120px;
+    margin-right: 1rem;
+  }
+  .principle .principle-content {
+    padding: 1.5rem;
+  }
+  .principle .principle-content .title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 2rem;
+  }
+  .principle .principle-content .story p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .principle {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+  }
+  .principle .principle-number {
+    position: relative;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+  .principle .principle-content {
+    padding: 1rem;
+  }
+  .principle .principle-content .title {
+    margin-bottom: 1.5rem;
+  }
+  .principle .principle-content .story p {
+    margin-bottom: 1.25rem;
+  }
+}
 .contact-section {
   min-height: 40vh;
   min-width: 100vw;
