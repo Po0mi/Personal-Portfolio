@@ -56,6 +56,7 @@
 
     .hero-container {
       @include section-grid;
+
       h1 {
         color: $h2-text;
         grid-area: 2/3/5/6;
@@ -88,12 +89,14 @@
         font-weight: 100;
         filter: brightness(0.8);
       }
+
       h6 {
         color: $h2-text;
         font-size: clamp(1rem, 5vw, 1rem);
         margin-top: 1rem;
         font-weight: 100;
       }
+
       .scroll-indicator {
         position: absolute;
         display: flex;
@@ -130,6 +133,220 @@
         60% {
           transform: translateY(0.25rem) rotate(-45deg);
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-section .hero-wrapper .hero-container {
+    h1 {
+      grid-area: 2/2/5/7;
+      font-size: clamp(1rem, 12vw, 18rem);
+    }
+
+    h2 {
+      grid-area: 4/4/5/8;
+      margin-left: 4rem;
+      font-size: clamp(1rem, 4.5vw, 2.8rem);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-section .hero-wrapper {
+    .hero-video {
+      height: 100vh;
+      top: -5%;
+    }
+
+    .hero-container {
+      h1 {
+        grid-area: 2/2/5/8;
+        font-size: clamp(1rem, 13vw, 15rem);
+      }
+
+      h2 {
+        grid-area: 4/3/5/9;
+        margin-left: 3rem;
+        font-size: clamp(1rem, 4vw, 2.5rem);
+      }
+
+      .scroll-indicator {
+        bottom: 4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section .hero-wrapper {
+    .hero-video {
+      height: 100vh;
+      top: 0;
+      filter: brightness(0.6) contrast(1.1) sepia(0.3);
+    }
+
+    .hero-container {
+      grid-template-columns: repeat(4, 1fr);
+
+      h1 {
+        grid-area: 2/1/5/5;
+        font-size: clamp(1.5rem, 14vw, 12rem);
+        line-height: 0.7;
+      }
+
+      h2 {
+        grid-area: 4/1/5/5;
+        margin-left: 0;
+        margin-bottom: 2rem;
+        font-size: clamp(1rem, 5vw, 2.2rem);
+        justify-self: center;
+        text-align: center;
+      }
+
+      h6 {
+        font-size: 0.9rem;
+      }
+
+      .scroll-indicator {
+        bottom: 3rem;
+
+        .arrow {
+          width: 0.9rem;
+          height: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section .hero-wrapper {
+    .hero-video {
+      height: 100vh;
+      top: 0;
+      filter: brightness(0.7) contrast(1.1) sepia(0.2);
+    }
+
+    .hero-container {
+      h1 {
+        grid-area: 2/1/4/5;
+        font-size: clamp(1.5rem, 15vw, 10rem);
+        line-height: 0.8;
+      }
+
+      h2 {
+        grid-area: 3/1/5/5;
+        margin-bottom: 3rem;
+        font-size: clamp(1rem, 5.5vw, 2rem);
+      }
+
+      h6 {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+      }
+
+      .scroll-indicator {
+        bottom: 2rem;
+        opacity: 0.6;
+
+        .arrow {
+          width: 0.8rem;
+          height: 0.8rem;
+          border-width: 1.5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-section .hero-wrapper {
+    .hero-container {
+      h1 {
+        font-size: clamp(1.2rem, 14vw, 8rem);
+      }
+
+      h2 {
+        font-size: clamp(0.9rem, 5vw, 1.6rem);
+        margin-bottom: 2.5rem;
+      }
+
+      h6 {
+        font-size: 0.7rem;
+      }
+
+      .scroll-indicator {
+        bottom: 1.5rem;
+
+        .arrow {
+          width: 0.7rem;
+          height: 0.7rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-section .hero-wrapper {
+    .hero-container {
+      h1 {
+        font-size: clamp(1rem, 13vw, 6rem);
+      }
+
+      h2 {
+        font-size: clamp(0.8rem, 4.5vw, 1.4rem);
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero-section .hero-wrapper {
+    .hero-container {
+      h1 {
+        font-size: clamp(1rem, 10vw, 22rem);
+      }
+
+      h2 {
+        margin-left: 7rem;
+        font-size: clamp(1rem, 4vw, 3.5rem);
+      }
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .hero-section .hero-wrapper {
+    .hero-video {
+      height: 150vh;
+      top: -20%;
+    }
+
+    .hero-container {
+      h1 {
+        font-size: clamp(1rem, 10vw, 15rem);
+      }
+
+      h2 {
+        margin-bottom: 0.5rem;
+        font-size: clamp(0.8rem, 4vw, 2.2rem);
+      }
+
+      .scroll-indicator {
+        bottom: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (orientation: portrait) and (max-width: 480px) {
+  .hero-section .hero-wrapper {
+    .hero-container {
+      h2 {
+        margin-bottom: 2rem;
       }
     }
   }

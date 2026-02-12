@@ -127,3 +127,9 @@ body {
   color: $h2-text;
   z-index: 1000;
 }
+@media (max-width: 768px) {
+  .corner-meta,
+  .cursor-coords {
+    display: none;
+  }
+}
