@@ -559,8 +559,7 @@ body.animating {
   margin-left: 5rem;
   font-size: clamp(1.5rem, 1vw, 1.5rem);
   text-justify: inter-word;
-  -webkit-hyphens: auto;
-          hyphens: auto;
+  hyphens: auto;
   line-height: 1.4;
   margin-bottom: 0rem;
   font-weight: 200;
