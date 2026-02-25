@@ -12,7 +12,7 @@ It highlights sections such as Home, About, Experience, Projects, and Contact.
 
 ## Live Demo
 
-[View Live Demo](https://personal-portfolio-one-tau-59.vercel.app)
+[View Live Demo](https://www.dandev.online)
 
 ---
 
